@@ -67,6 +67,22 @@ server.route({
   }
 })
 
+server.route({
+  method: 'GET',
+  path: '/default/css/default.css',
+  handler: function (request, reply) {
+    reply.file(path.join(__dirname, '..', 'public', 'client.css'))
+  }
+})
+
+server.route({
+  method: 'GET',
+  path: '/default/js/default.js',
+  handler: function (request, reply) {
+    reply.file(path.join(__dirname, '..', 'public', 'client.js'))
+  }
+})
+
 server.start(function (err) {
   if (err) throw err
   console.log('Server running at %s', server.info.uri)
