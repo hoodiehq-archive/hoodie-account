@@ -30,16 +30,32 @@ body {
   -webkit-animation: load 3s linear infinite;
 }
 @keyframes load {
-  0%{
-      content: "Loading";
-    }
-  25%{
-      content: "Loading.";
-    }
-  50%{
-      content: "Loading..";
-    }
-  75%{
-      content: "Loading...";
-     }
+  0% {
+    content: "Loading";
   }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}
+.profile-forms, .input-forms {
+  position: relative;
+}
+.hoodie-tooltip {
+  display: inline-block;
+  opacity: 0;
+  background-color: lightgrey;
+  color: #fff;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+input[name="update-password-field"]:hover + div {
+  opacity: 1;
+}

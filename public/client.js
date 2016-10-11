@@ -5,40 +5,42 @@ let account = hoodie.account
 // UI Components
 const signInForm = '<div id="sign-in-form" class="input-forms">'
   + '<h3>Sign In</h3><br>'
-  + '<input type="text" placeholder="Name"><br>'
-  + '<input type="password" placeholder="Password"><br>'
-  + '<button class="hoodie-button">SIGN IN</button>'
+  + '<input name="login-username-field" type="text" placeholder="Username"><br>'
+  + '<input name="login-password-field" type="password" placeholder="Password"><br>'
+  + '<button id="login" class="hoodie-button">SIGN IN</button>'
   + '</div>'
 
-const signUpForm = '<div id="sign-up-form" class="input-forms">'
+const signUpForm = '<div class="input-forms">'
   + '<h3>Sign Up</h3><br>'
-  + '<input type="text" placeholder="Name"><br>'
-  + '<input type="password" placeholder="Password"><br>'
-  + '<button class="hoodie-button">SIGN UP</button>'
+  + '<input name="register-username-field" type="text" placeholder="Username"><br>'
+  + '<input name="register-password-field" type="password" placeholder="Password"><br>'
+  + '<button id="register" class="hoodie-button">SIGN UP</button>'
   + '</div>'
 
-const pwdResetForm = '<div id="pwd-reset-form" class="input-forms">'
+const pwdResetForm = '<div class="input-forms">'
   + '<h3>Reset Password</h3><br>'
-  + '<input type="text" placeholder="Email"><br>'
-  + '<button class="hoodie-button">REQUEST</button>'
+  + '<input name="reset-email-field" type="text" placeholder="Email"><br>'
+  + '<button id="reset" class="hoodie-button">REQUEST</button>'
   + '</div>'
 
-const updateUsername = username => (
-  `<div id="update-username-form" class="profile-forms">`
-  + `<h3>Username</h3><br>`
-  + `<input type="text" placeholder="Username" value="${username}"><br>`
-  + `<button class="hoodie-button">Update Username</button>`
+const updateAccount = username => (
+  `<div class="profile-forms">`
+  + `<h3>Account Settings</h3><br>`
+  + `<input name="update-username-field" type="text" placeholder="Username" value="${username}"><br>`
+  + `<input name="update-password-field" type="text" placeholder="Type New Password">`
+  + `<div class="hoodie-tooltip">If you leave it blank, we won't modify the password</div><br>`
+  + `<button id="update" class="hoodie-button">Update Account</button>`
   + `</div>`
 )
 
-const deleteAccount = '<div id="destroy-user-form" class="profile-forms">'
+const deleteAccount = '<div class="profile-forms">'
   + '<h3>Destroy Account</h3><br>'
-  + '<button class="hoodie-button">Confirm</button>'
+  + '<button id="destroy" class="hoodie-button">Confirm</button>'
   + '</div>'
 
 // Client rendering logic
 if (account.isSignedIn()) {
-  body[0].innerHTML = updateUsername(account.username) + deleteAccount
+  body[0].innerHTML = updateAccount(account.username) + deleteAccount
 } else {
   body[0].innerHTML = signInForm + signUpForm + pwdResetForm
 }
