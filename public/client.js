@@ -1,4 +1,4 @@
-const body = document.getElementsByTagName('body')
+const body = document.querySelector('body')
 
 // UI Components
 const signInForm = '<div id="sign-in-form" class="input-forms">' +
@@ -31,6 +31,11 @@ const updateAccount = username => (
   `</div>`
 )
 
+const signOutAccount = '<div class="profile-forms">' +
+  '<h3>Sign Out</h3><br>' +
+  '<button id="logout" class="hoodie-button">Confirm</button>' +
+  '</div>'
+
 const deleteAccount = '<div class="profile-forms">' +
   '<h3>Destroy Account</h3><br>' +
   '<button id="destroy" class="hoodie-button">Confirm</button>' +
@@ -60,6 +65,9 @@ const actions = {
       return account.update({username, password})
     }
   },
+  logout: () => {
+    return account.signOut()
+  },
   destroy: () => {
     return account.destroy()
   }
@@ -73,17 +81,24 @@ document.querySelector('body').addEventListener('click', event => {
   if (actions[event.target.id] !== undefined) {
     actions[event.target.id]()
     .then((r) => {
-      console.log(r)
+      if (event.target.id === 'login') {
+        body.innerHTML = updateAccount(account.username) + signOutAccount + deleteAccount
+      } else if (event.target.id === 'register') {
+        body.innerHTML = signInForm + signUpForm + pwdResetForm
+        alert('Succesfully registered! Please sign in to access profile settings.')
+      } else if (event.target.id === 'destroy' || event.target.id === 'logout') {
+        body.innerHTML = signInForm + signUpForm + pwdResetForm
+      }
     })
     .catch((e) => {
-      console.log(e)
+      alert(e)
     })
   }
 })
 
 // Client Rendering Logic
 if (account.isSignedIn()) {
-  body[0].innerHTML = updateAccount(account.username) + deleteAccount
+  body.innerHTML = updateAccount(account.username) + signOutAccount + deleteAccount
 } else {
-  body[0].innerHTML = signInForm + signUpForm + pwdResetForm
+  body.innerHTML = signInForm + signUpForm + pwdResetForm
 }
