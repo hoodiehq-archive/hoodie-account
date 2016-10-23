@@ -7,7 +7,43 @@
     <script src="/hoodie/client.js"></script>
   </head>
   <body>
-    <div class="generic-loader-wrap"></div>
+
+    <div data-hide="false" class="generic-loader-wrap"></div>
+
+    <div data-hide="true" class="input-forms">
+      <h3>Sign In</h3><br>
+      <input name="login-username-field" type="text" placeholder="Username"><br>
+      <input name="login-password-field" type="password" placeholder="Password"><br>
+      <button id="login" class="hoodie-button">SIGN IN</button>
+    </div>
+    <div data-hide="true" class="input-forms">
+      <h3>Sign Up</h3><br>
+      <input name="register-username-field" type="text" placeholder="Username"><br>
+      <input name="register-password-field" type="password" placeholder="Password"><br>
+      <button id="register" class="hoodie-button">SIGN UP</button>
+    </div>
+    <div data-hide="true" class="input-forms">
+      <h3>Reset Password</h3><br>
+      <input name="reset-email-field" type="text" placeholder="Email"><br>
+      <button id="reset" class="hoodie-button">REQUEST</button>
+    </div>
+
+    <div data-hide="true" class="profile-forms">
+      <h3>Account Settings</h3><br>
+      <input name="update-username-field" type="text" placeholder="Username"><br>
+      <input name="update-password-field" type="text" placeholder="Type New Password">
+      <div class="hoodie-tooltip">If you leave it blank, we won't modify the password</div><br>
+      <button id="update" class="hoodie-button">Update Account</button>
+    </div>
+    <div data-hide="true" class="profile-forms">
+      <h3>Sign Out</h3><br>
+      <button id="logout" class="hoodie-button">Confirm</button>
+    </div>
+    <div data-hide="true" class="profile-forms">
+      <h3>Destroy Account</h3><br>
+      <button id="destroy" class="hoodie-button">Confirm</button>
+    </div>
+
     <script src="/default/js/default.js"></script>
   </body>
 </html>
