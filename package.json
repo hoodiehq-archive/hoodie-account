@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/hoodiehq/hoodie-account#readme",
   "dependencies": {
-    "@hoodie/account-client": "^4.0.3",
+    "@hoodie/account-client": "^4.4.0",
     "@hoodie/account-server": "^6.0.4"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "inert": "^4.0.0",
     "memdown": "^1.1.2",
     "mocha": "^3.0.0",
-    "pouchdb": "^6.0.4",
+    "pouchdb-memory": "^6.0.0",
     "pouchdb-users": "^1.0.3",
     "semantic-release": "^4.3.5",
     "standard": "^8.2.0"

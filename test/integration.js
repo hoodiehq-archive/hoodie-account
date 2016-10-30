@@ -228,6 +228,9 @@ describe('hoodie.account', function () {
     .executeAsync(function fetch (done) {
       hoodie.account.update({foo: 'bar'}).then(done, done)
     }).then(toValue)
+    .then(function () {
+      expect('account.update({foo: "bar"}) to reject with ForbiddenError').to.be.undefined
+    })
     .catch(function (error) {
       expect(error.name).to.equal('ForbiddenError')
     })
@@ -242,7 +245,7 @@ describe('hoodie.account', function () {
     .then(function (account) {
       expect(account.username).to.equal(newUsername)
       expect(account.id).to.match(/^\w+$/)
-      expect(Object.keys(account).sort()).to.deep.equal(['id', 'username'])
+      expect(Object.keys(account).sort()).to.deep.equal(['createdAt', 'id', 'signedUpAt', 'username'])
     })
   })
 
