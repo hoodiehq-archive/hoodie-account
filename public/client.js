@@ -1,5 +1,8 @@
 const body = document.querySelector('body')
 
+// Account instance for hoodie-account-client
+let account = hoodie.account
+
 const actions = {
   login: () => {
     let username = document.querySelector('input[name="login-username-field"]').value
@@ -31,9 +34,6 @@ const actions = {
     return account.destroy()
   }
 }
-
-// Account instance for hoodie-account-client
-let account = hoodie.account
 
 // Event Listener for Actions
 document.querySelector('body').addEventListener('click', event => {
