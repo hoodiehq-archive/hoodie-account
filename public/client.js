@@ -37,6 +37,7 @@ const actions = {
 
 // Event Listener for Actions
 document.querySelector('body').addEventListener('click', event => {
+  document.querySelectorAll('.messages').forEach(node => node.innerHTML = '')
   if (actions[event.target.id] !== undefined) {
     actions[event.target.id]()
     .then((r) => {
@@ -44,14 +45,32 @@ document.querySelector('body').addEventListener('click', event => {
         document.querySelectorAll('.input-forms').forEach(node => node.setAttribute('data-hide', 'true'))
         document.querySelectorAll('.profile-forms').forEach(node => node.setAttribute('data-hide', 'false'))
       } else if (event.target.id === 'register') {
-        alert('Succesfully registered! Please sign in to access profile settings.')
+        let node = document.querySelector('#register-response')
+        node.style.color = 'green'
+        node.innerHTML = 'Successfully Registration: Please sign in to access profile settings'
       } else if (event.target.id === 'destroy' || event.target.id === 'logout') {
         document.querySelectorAll('.profile-forms').forEach(node => node.setAttribute('data-hide', 'true'))
         document.querySelectorAll('.input-forms').forEach(node => node.setAttribute('data-hide', 'false'))
+      } else if (event.target.id === 'update' ) {
+        let node = document.querySelector('#update-response')
+        node.style.color = 'green'
+        node.innerHTML = 'Successful Updation'
       }
     })
     .catch((e) => {
-      alert(e)
+      if (event.target.id === 'login') {
+        let node = document.querySelector('#login-response')
+        node.style.color = 'red'
+        node.innerHTML = e
+      } else if (event.target.id === 'register') {
+        let node = document.querySelector('#register-response')
+        node.style.color = 'red'
+        node.innerHTML = e
+      } else if (event.target.id === 'reset') {
+        let node = document.querySelector('#password-reset-response')
+        node.style.color = 'red'
+        node.innerHTML = e
+      }
     })
   }
 })
