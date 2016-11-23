@@ -5,22 +5,22 @@ let account = hoodie.account
 
 const actions = {
   login: () => {
-    let username = document.querySelector('input[name="login-username-field"]').value
-    let password = document.querySelector('input[name="login-password-field"]').value
+    let username = document.querySelector('input[id="login-username-field"]').value
+    let password = document.querySelector('input[id="login-password-field"]').value
     return account.signIn({username, password})
   },
   register: () => {
-    let username = document.querySelector('input[name="register-username-field"]').value
-    let password = document.querySelector('input[name="register-password-field"]').value
+    let username = document.querySelector('input[id="register-username-field"]').value
+    let password = document.querySelector('input[id="register-password-field"]').value
     return account.signUp({username, password})
   },
   reset: () => {
-    let contact = document.querySelector('input[name="reset-email-field"]').value
+    let contact = document.querySelector('input[id="reset-email-field"]').value
     return account.request({type: 'passwordreset', contact: contact})
   },
   update: () => {
-    let username = document.querySelector('input[name="update-username-field"]').value
-    let password = document.querySelector('input[name="update-password-field"]').value
+    let username = document.querySelector('input[id="update-username-field"]').value
+    let password = document.querySelector('input[id="update-password-field"]').value
     if (password === '') {
       return account.update({username})
     } else {
