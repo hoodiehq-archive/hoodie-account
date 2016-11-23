@@ -66,6 +66,14 @@ body {
   text-align: center;
 }
 
+.profile-forms > label, .input-forms > label {
+  float: left;
+  position: relative;
+  left: 57px;
+  top: 5px;
+  font-size: 12px;
+}
+
 .password-tooltip {
   position: fixed;
   top: 10px;
